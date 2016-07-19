@@ -5,6 +5,9 @@ g = {
     x : 0,
     y : 0,
     d : [],
+    tick: 0,
+    time : 12,
+    stamp : null,
 
     init: function () {
         console.log('g.init');
@@ -18,6 +21,9 @@ g = {
         var pImg = new Image();
             pImg.src = 'img/p.png';
         p.init(pImg);
+
+        g.stamp = Date.now();
+
         document.onmousemove = m.handle;
         document.onkeypress = p.handle;
         setInterval(g.update, 1000/60);
@@ -25,6 +31,18 @@ g = {
     },
 
     update : function () {
+        g.tick += 1;
+
+        if (g.tick % 20 == 0) {
+            // time
+            if (Date.now() - g.stamp > 1000) {
+                g.time += 1;
+                g.stamp = Date.now();
+                if (g.time > 24) {
+                    g.time = 1;
+                }
+            }
+        }
         p.update();
     },
 
@@ -41,7 +59,10 @@ g = {
         }
 
         mm.draw();
-        
+
+        // time
+        c2d.fillText(g.time, 25, 25);
+
         requestAnimationFrame(g.draw);
     }
 };

@@ -21,7 +21,6 @@ p = {
         'SE': {x:0, y:80},
         'NE': {x:0, y:96},
         'NW': {x:0, y:112},
-
     },
     step :0,
     inMove : 0,
@@ -45,6 +44,7 @@ p = {
         c2d.moveTo(p.cX, p.cY);
         c2d.lineTo(m.x, m.y);
         //c2d.stroke();
+        
     },
 
     update : function () {
@@ -61,6 +61,8 @@ p = {
         } else {
             p.inMove = 0;
         }
+
+
         if (p.tick % 100 == 0) {
             console.log(p.vX);
         }
