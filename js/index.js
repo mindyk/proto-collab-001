@@ -13,14 +13,32 @@ g = {
         console.log('g.init');
 
         m.init();
+        // trees
         var img = new Image();
-        img.src = 'img/trees_120x120.png';
+        img.src = 'img/tree.png';
         for (var i = 0; i < 10; i++) {
             g.d.push(new Tree(img));
         }
-        var pImg = new Image();
-            pImg.src = 'img/p.png';
-        p.init(pImg);
+        // grass
+        var gImg = new Image();
+        gImg.src = 'img/grass.png';
+        for (var ig = 0; ig < 10; ig++) {
+            g.d.push(new Grass(gImg));
+        }
+        // grass
+        var sImg = new Image();
+        sImg.src = 'img/stone.png';
+        for (var is = 0; is < 10; is++) {
+            g.d.push(new Stone(sImg));
+        }
+
+        // player
+        var pImg = new Image(),
+            shadowImg = new Image();
+            pImg.src = 'img/p2.png';
+            shadowImg.src = 'img/shadow.png';
+
+        p.init(pImg, shadowImg);
 
         g.stamp = Date.now();
 
@@ -49,6 +67,11 @@ g = {
 
     draw : function () {
         c2d.clearRect(0,0,800,600);
+
+        // background
+        c2d.fillStyle = '#AA896A';
+        c2d.fillRect(0,0,800,600);
+
         c2d.fillStyle = 'black';
 
         p.draw();

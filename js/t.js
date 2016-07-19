@@ -10,8 +10,8 @@ function Tree (img) {
     this.start = -1;
 
     this.draw = function (c2d) {
-        var xy = this.sprites[this.key];
-        c2d.drawImage(this.img, xy.x,xy.y,60,60,this.x,this.y, 60,60);
+        var xy = this.sprites[0];
+        c2d.drawImage(this.img, xy.x,xy.y,19,31,this.x,this.y, 38,62);
     };
 
     this.shake = function () {

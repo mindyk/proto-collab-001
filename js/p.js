@@ -33,8 +33,9 @@ p = {
     D: null,
     cpress : 0,
 
-    init : function (img) {
+    init : function (img, shadowImg) {
         p.img = img;
+        p.shadow = shadowImg;
     },
 
     draw : function () {
@@ -43,6 +44,8 @@ p = {
         var delta = Date.now() - p.stemp;
         // draw current sprite
         c2d.drawImage(p.img, 16 * p.step ,p.sprites[p.d].y,16, 16, p.x, p.y,32,32);
+        c2d.drawImage(p.shadow, 0 ,0,8, 4, p.x, p.y +32,32,4);
+
         // if we are moving and animation delta treshold is reached we use the next frame in sprite
         if (p.cpress > 0 && delta > ams) {
             p.step += 1;
@@ -53,7 +56,7 @@ p = {
             p.stemp = Date.now();
         }
         // reset animation steps
-        if (p.step == 3) {
+        if (p.step == 4) {
             p.step = 0;
         }
 
