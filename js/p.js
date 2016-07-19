@@ -32,7 +32,7 @@ p = {
 
     draw : function () {
 
-        c2d.drawImage(p.img, 16 * p.step ,p.sprites[p.d].y,16, 16, p.x, p.y,16,16);
+        c2d.drawImage(p.img, 16 * p.step ,p.sprites[p.d].y,16, 16, p.x, p.y,32,32);
         if (p.inMove != 0) {
         p.step += 1;
         }
