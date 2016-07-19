@@ -27,7 +27,7 @@ g = {
         }
         // grass
         var sImg = new Image();
-        sImg.src = 'img/stone.png';
+        sImg.src = 'img/grass.png';
         for (var is = 0; is < 10; is++) {
             g.d.push(new Stone(sImg));
         }
