@@ -25,7 +25,8 @@ g = {
         g.stamp = Date.now();
 
         document.onmousemove = m.handle;
-        document.onkeypress = p.handle;
+        document.onkeydown = p.keydown;
+        document.onkeyup = p.keyup;
         setInterval(g.update, 1000/60);
         requestAnimationFrame(g.draw);
     },

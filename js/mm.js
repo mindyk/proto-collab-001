@@ -14,5 +14,10 @@ mm = {
         c2d.stroke();
         c2d.fillStyle = 'red';
         c2d.fillRect(mm.x + p.x / 10, mm.y + p.y / 10   , 2,2);
+        c2d.fillStyle = 'green';
+        for (var i = 0; i < g.d.length; i++) {
+            var t = g.d[i];
+            c2d.fillRect(mm.x + t.x / 10, mm.y + t.y / 10, 2, 2);
+        }
     }
 };
