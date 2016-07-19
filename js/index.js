@@ -15,6 +15,9 @@ g = {
         for (var i = 0; i < 10; i++) {
             g.d.push(new Tree(img));
         }
+        var pImg = new Image();
+            pImg.src = 'img/p.png';
+        p.init(pImg);
         document.onmousemove = m.handle;
         document.onkeypress = p.handle;
         setInterval(g.update, 1000/60);
