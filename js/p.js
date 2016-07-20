@@ -1,6 +1,6 @@
 p = {
-    x :100,
-    y : 100,
+    x :400,
+    y : 300,
     h : 16,
     w : 16,
     s : 1, // speed
@@ -108,8 +108,8 @@ p = {
         p.vY *= p.f;
 
         // add velocity to current positions
-        p.x += p.vX;
-        p.y += p.vY;
+        g.x += p.vX;
+        g.y += p.vY;
 
         if(p.vX != 0) {
             p.inMove = 1;

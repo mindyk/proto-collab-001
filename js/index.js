@@ -4,6 +4,8 @@ var el_canvas = document.getElementById('playground'),
 g = {
     x : 0,
     y : 0,
+    w : 800,
+    h : 600,
     d : [],
     tick: 0,
     time : 12,
@@ -27,7 +29,7 @@ g = {
         }
         // grass
         var sImg = new Image();
-        sImg.src = 'img/grass.png';
+        sImg.src = 'img/stone.png';
         for (var is = 0; is < 10; is++) {
             g.d.push(new Stone(sImg));
         }

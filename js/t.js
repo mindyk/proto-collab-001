@@ -13,7 +13,7 @@ function Tree (img) {
         var xy = this.sprites[0],
             w = 19,
             h = 31;
-        c2d.drawImage(this.img, xy.x,xy.y,w,h,this.x,this.y, w*3,h*3);
+        c2d.drawImage(this.img, xy.x,xy.y,w,h,this.x - g.x,this.y -g.y, w*3,h*3);
     };
 
     this.shake = function () {

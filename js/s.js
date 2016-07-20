@@ -6,7 +6,7 @@ function Stone (img) {
     this.start = -1;
 
     this.draw = function (c2d) {
-        c2d.drawImage(this.img, 0,0,19,31,this.x,this.y, 38,62);
+        c2d.drawImage(this.img, 0,0,19,31,this.x -g.x,this.y -g.y, 38,62);
     };
 
 }
