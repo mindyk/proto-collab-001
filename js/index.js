@@ -10,6 +10,7 @@ g = {
     tick: 0,
     time : 12,
     stamp : null,
+    shadow : null,
 
     init: function () {
         console.log('g.init');
@@ -39,6 +40,7 @@ g = {
             shadowImg = new Image();
             pImg.src = 'img/p2.png';
             shadowImg.src = 'img/shadow.png';
+        g.shadow = shadowImg;
 
         p.init(pImg, shadowImg);
 
