@@ -4,6 +4,7 @@ var el_canvas = document.getElementById('playground'),
 g = {
     a : 0.0,
     cb: true,
+    dn : true,
     x : 0,
     y : 0,
     w : 800,
@@ -56,6 +57,7 @@ g = {
         g.ops = document.getElementById('pac');
         g.opf = document.getElementById('pf');
         g.ocb = document.getElementById('cb');
+        g.odn = document.getElementById('dn');
 
         setInterval(g.slupdate, 500);
         setInterval(g.update, 1000/60);
@@ -67,12 +69,14 @@ g = {
         var pms = parseInt(g.opms.value),
             ps = parseInt(g.ops.value),
             pf = parseFloat(g.opf.value),
-            cb = g.ocb.checked;
+            cb = g.ocb.checked,
+            dn = g.odn.checked;
 
         p.ms = pms;
         p.s = ps;
         p.f = pf;
         g.cb = cb;
+        g.dn = dn;
 
 
     },
@@ -119,7 +123,10 @@ g = {
         c2d.fillText(g.time, 25, 25);
 
         c2d.fillStyle = 'rgba(33,33,33, ' + g.a + ')';
-        c2d.fillRect(0,0,g.w, g.h);
+        if (g.dn) {
+            c2d.fillRect(0,0,g.w, g.h);
+
+        }
         requestAnimationFrame(g.draw);
     },
 
