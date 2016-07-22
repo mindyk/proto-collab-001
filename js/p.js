@@ -176,7 +176,7 @@ p = {
         }
 
         if (p.tick % 100 == 0) {
-            console.log(p.cpress);
+            //console.log(p.cpress);
         }
     },
 
