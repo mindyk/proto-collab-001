@@ -2,6 +2,7 @@ var el_canvas = document.getElementById('playground'),
     c2d = el_canvas.getContext("2d");
 
 g = {
+    a : 0.0,
     x : 0,
     y : 0,
     w : 800,
@@ -80,6 +81,7 @@ g = {
             // time
             if (Date.now() - g.stamp > 1000) {
                 g.time += 1;
+                g.calcAlpha();
                 g.stamp = Date.now();
                 if (g.time > 24) {
                     g.time = 1;
@@ -111,6 +113,8 @@ g = {
         // time
         c2d.fillText(g.time, 25, 25);
 
+        c2d.fillStyle = 'rgba(33,33,33, ' + g.a + ')';
+        c2d.fillRect(0,0,g.w, g.h);
         requestAnimationFrame(g.draw);
     },
 
@@ -156,6 +160,72 @@ g = {
         }
 
         return col;
+    },
+
+    calcAlpha : function () {
+        switch(g.time) {
+            case 0:
+                g.a = 0.8;
+                break;
+            case 1:
+                g.a = 0.8;
+                break;
+            case 2:
+                g.a = 0.7;
+                break;
+            case 3:
+                g.a = 0.6;
+                break;
+            case 4:
+                g.a = 0.5;
+                break;
+            case 5:
+                g.a = 0.4;
+                break;
+            case 6 :
+                g.a = 0.3;
+                break;
+            case 7 :
+            case 8 :
+                g.a = 0.2;
+                break;
+            case 9 :
+            case 10:
+            case 11:
+                g.a = 0.1;
+                break;
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+                g.a = 0.0;
+                break;
+            case 17:
+                g.a = 0.1;
+                break;
+            case 18:
+                g.a = 0.2;
+                break;
+            case 19:
+                g.a = 0.3;
+                break;
+            case 20:
+                g.a = 0.4;
+                break;
+            case 21:
+                g.a = 0.5;
+                break;
+            case 22:
+                g.a = 0.6;
+                break;
+            case 23:
+                g.a = 0.7;
+                break;
+            case 24:
+                g.a = 0.8;
+                break;
+        }
     }
 };
 
