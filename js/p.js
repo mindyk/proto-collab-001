@@ -127,11 +127,16 @@ p = {
         p.vX *= p.f;
         p.vY *= p.f;
 
-        p.collision();
+        var fx = g.x + p.vX,
+            fy = g.y + p.vY;
+
+        p.collision(fx, fy);
 
         // add velocity to current positions
-        g.x += p.vX;
-        g.y += p.vY;
+        if (p.col == false) {
+            g.x += p.vX;
+            g.y += p.vY;
+        }
 
         if(p.vX != 0) {
             p.inMove = 1;
@@ -173,20 +178,18 @@ p = {
         }
     },
 
-    collision : function () {
-        var fx = g.x - p.vX,
-            fy = g.y - p.vY,
-            i = 0;
+    collision : function (fx, fy) {
+
 
         p.col = false;
-        for (i; i< g.d.length; i++) {
+        for (var i =0; i< g.d.length; i++) {
             var obj = g.d[i];
 
-            if (obj.name != 'tree') {
+            if (obj.name == 'grass') {
                 continue;
             }
             obj.col = false;
-            if (g.colission(p, obj)) {
+            if (g.colission(p, obj, fx, fy)) {
                 p.col = true;
                 obj.col = true;
             }

@@ -95,42 +95,45 @@ g = {
     },
 
     colission : function(obj1, obj2) {
-        var col = false;
+        var col = false,
+            o1 = {
+                tl : {x : obj1.cx + p.vX, y:obj1.cy + p.vY},
+                tr : {x : obj1.cx + obj1.cw + p.vX , y: obj1.cy + p.vY},
+                bl : {x : obj1.cx + p.vX, y: obj1.cy + obj1.ch + p.vY},
+                br : {x : obj1.cx + obj1.cw + p.vX, y: obj1.cy + obj1.ch + p.vY}
+            };
 
         // top left corner
         // obj1
-        if (obj1.cx > obj2.cx && obj1.cx < obj2.cx + obj2.cw) {
-            if(obj1.cy > obj2.cy && obj1.cy < obj2.cy + obj2.ch) {
+        if (o1.tl.x > obj2.cx && o1.tl.x < obj2.cx + obj2.cw) {
+            if(o1.tl.y > obj2.cy && o1.tl.y < obj2.cy + obj2.ch) {
                 col = true;
             }
         }
         // obj2
-        if (obj2.cx > obj1.cx && obj2.cx < obj1.cx + obj1.cw) {
+        if (obj2.cx > o1.tl.x && obj2.cx < o1.tr.x) {
             // top left
-            if (obj2.cy > obj1.cy && obj2.cy < obj1.cy + obj1.ch) {
+            if (obj2.cy > o1.tl.y && obj2.cy < o1.bl.y) {
                 col = true;
             }
             // bottom left
-            if (obj2.cy + obj2.ch > obj1.cy && obj2.cy + obj2.ch < obj1.cy +obj1.ch) {
+            if (obj2.cy + obj2.ch > o1.tl.y && obj2.cy + obj2.ch < o1.bl.y) {
                 col = true;
             }
         }
 
         // top right corner
-        var cx = obj1.cx + obj1.cw;
-        if (cx > obj2.cx && cx < obj2.cx + obj2.cw ) {
-            if (obj1.cy > obj2.cy && obj1.cy < obj2.cy + obj2.ch) {
+        if (o1.tr.x > obj2.cx && o1.tr.x < obj2.cx + obj2.cw ) {
+            if (o1.tr.y > obj2.cy && o1.tr.y < obj2.cy + obj2.ch) {
                 col = true;
             }
         }
-        cx = obj2.cx + obj2.cw;
-        if (cx > obj1.cx && cx < obj1.cx + obj1.cw) {
-            if (obj2.cy > obj1.cy && obj2.cy < obj1.cy + obj1.ch) {
+        var cx = obj2.cx + obj2.cw;
+        if (cx > o1.tl.x && cx < o1.tr.x) {
+            if (obj2.cy > o1.tl.y && obj2.cy < o1.bl.y) {
                 col = true;
             }
         }
-
-        // bottom left corner
 
         return col;
     }
