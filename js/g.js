@@ -4,6 +4,7 @@ function Grass (img) {
     this.y = Math.floor(Math.random() * 600) + 1;
     this.o = {};
     this.start = -1;
+    this.name = 'grass';
 
     this.draw = function (c2d) {
         c2d.drawImage(this.img, 0,0,19,31,this.x - g.x,this.y - g.y, 38,62);

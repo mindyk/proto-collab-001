@@ -4,6 +4,7 @@ function Stone (img) {
     this.y = Math.floor(Math.random() * 600) + 1;
     this.o = {};
     this.start = -1;
+    this.name = 'stone';
 
     this.draw = function (c2d) {
         var w = 16,

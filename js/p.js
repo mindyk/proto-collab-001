@@ -33,17 +33,26 @@ p = {
     D: null,
     cpress : 0,
 
+    scale : 2,
+    cx: null,
+    cy : null,
+    cw : 29 ,
+    ch : 32 ,
+    col: false,
+
     init : function (img, shadowImg) {
         p.img = img;
         p.shadow = shadowImg;
     },
+
+
 
     draw : function () {
         var ams = 100   ;
         // calc delta for animation speed
         var delta = Date.now() - p.stemp;
         // draw current sprite
-        c2d.drawImage(p.img, 16 * p.step ,p.sprites[p.d].y,16, 16, p.x, p.y,32,32);
+        c2d.drawImage(p.img, 16 * p.step ,p.sprites[p.d].y,16, 16, p.x, p.y,p.w*p.scale,p.h * p.scale);
         c2d.drawImage(p.shadow, 0 ,0,8, 4, p.x, p.y +32,32,4);
 
         // if we are moving and animation delta treshold is reached we use the next frame in sprite
@@ -59,6 +68,17 @@ p = {
         if (p.step == 4) {
             p.step = 0;
         }
+
+        // collision box
+        p.cx = p.x+3;
+        p.cy = p.y;
+        c2d.strokeStyle = 'green';
+        if (p.col) {
+            c2d.strokeStyle = 'red';
+        }
+        c2d.beginPath();
+        c2d.rect(p.cx, p.cy, (p.cw -3) , p.ch );
+        c2d.stroke();
 
         // cursor
         c2d.beginPath();
@@ -107,6 +127,8 @@ p = {
         p.vX *= p.f;
         p.vY *= p.f;
 
+        p.collision();
+
         // add velocity to current positions
         g.x += p.vX;
         g.y += p.vY;
@@ -148,6 +170,26 @@ p = {
 
         if (p.tick % 100 == 0) {
             console.log(p.cpress);
+        }
+    },
+
+    collision : function () {
+        var fx = g.x - p.vX,
+            fy = g.y - p.vY,
+            i = 0;
+
+        p.col = false;
+        for (i; i< g.d.length; i++) {
+            var obj = g.d[i];
+
+            if (obj.name != 'tree') {
+                continue;
+            }
+            obj.col = false;
+            if (g.colission(p, obj)) {
+                p.col = true;
+                obj.col = true;
+            }
         }
     },
 

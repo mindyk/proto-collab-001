@@ -92,6 +92,37 @@ g = {
         c2d.fillText(g.time, 25, 25);
 
         requestAnimationFrame(g.draw);
+    },
+
+    colission : function(obj1, obj2) {
+        var col = false;
+
+        // top left corner
+        if (obj1.cx > obj2.cx && obj1.cx < obj2.cx + obj2.cw) {
+            if(obj1.cy > obj2.cy && obj1.cy < obj2.cy + obj2.ch) {
+                col = true;
+            }
+        }
+        if (obj2.cx > obj1.cx && obj2.cx < obj1.cx + obj1.cw) {
+            if (obj2.cy > obj1.cy && obj2.cy < obj1.cy + obj1.ch) {
+                col = true;
+            }
+        }
+
+        // top right corner
+        var cx = obj1.cx + obj1.cw;
+        if (cx > obj2.cx && cx < obj2.cx + obj2.cw ) {
+            if (obj1.cy > obj2.cy && obj1.cy < obj2.cy + obj2.ch) {
+                col = true;
+            }
+        }
+        cx = obj2.cx + obj2.cw;
+        if (cx > obj1.cx && cx < obj1.cx + obj1.cw) {
+            if (obj2.cy > obj1.cy && obj2.cy < obj1.cy + obj1.ch) {
+                col = true;
+            }
+        }
+        return col;
     }
 };
 
