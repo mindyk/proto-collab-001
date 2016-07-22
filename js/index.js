@@ -49,12 +49,32 @@ g = {
         document.onmousemove = m.handle;
         document.onkeydown = p.keydown;
         document.onkeyup = p.keyup;
+
+        g.opms = document.getElementById('pms');
+        g.ops = document.getElementById('pac');
+        g.opf = document.getElementById('pf');
+
+        setInterval(g.slupdate, 500);
         setInterval(g.update, 1000/60);
+
         requestAnimationFrame(g.draw);
+    },
+
+    slupdate : function () {
+        var pms = parseInt(g.opms.value),
+            ps = parseInt(g.ops.value),
+            pf = parseFloat(g.opf.value);
+
+        p.ms = pms;
+        p.s = ps;
+        p.f = pf;
+
     },
 
     update : function () {
         g.tick += 1;
+
+
 
         if (g.tick % 20 == 0) {
             // time
