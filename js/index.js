@@ -98,13 +98,20 @@ g = {
         var col = false;
 
         // top left corner
+        // obj1
         if (obj1.cx > obj2.cx && obj1.cx < obj2.cx + obj2.cw) {
             if(obj1.cy > obj2.cy && obj1.cy < obj2.cy + obj2.ch) {
                 col = true;
             }
         }
+        // obj2
         if (obj2.cx > obj1.cx && obj2.cx < obj1.cx + obj1.cw) {
+            // top left
             if (obj2.cy > obj1.cy && obj2.cy < obj1.cy + obj1.ch) {
+                col = true;
+            }
+            // bottom left
+            if (obj2.cy + obj2.ch > obj1.cy && obj2.cy + obj2.ch < obj1.cy +obj1.ch) {
                 col = true;
             }
         }
@@ -122,6 +129,9 @@ g = {
                 col = true;
             }
         }
+
+        // bottom left corner
+
         return col;
     }
 };
