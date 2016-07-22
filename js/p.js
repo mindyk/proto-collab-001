@@ -78,7 +78,9 @@ p = {
         }
         c2d.beginPath();
         c2d.rect(p.cx, p.cy, (p.cw -3) , p.ch );
-        c2d.stroke();
+        if (g.cb) {
+            c2d.stroke();
+        }
 
         // cursor
         c2d.beginPath();
@@ -179,7 +181,6 @@ p = {
     },
 
     collision : function (fx, fy) {
-
 
         p.col = false;
         for (var i =0; i< g.d.length; i++) {

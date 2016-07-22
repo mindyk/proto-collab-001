@@ -31,8 +31,10 @@ function Stone (img) {
         }
         c2d.beginPath();
         c2d.rect(this.cx, this.cy, this.cw, this.ch);
-        c2d.stroke();
-
+        if (g.cb) {
+            c2d.stroke();
+        }
+        
     };
 
 }

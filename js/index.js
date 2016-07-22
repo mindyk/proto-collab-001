@@ -3,6 +3,7 @@ var el_canvas = document.getElementById('playground'),
 
 g = {
     a : 0.0,
+    cb: true,
     x : 0,
     y : 0,
     w : 800,
@@ -54,6 +55,7 @@ g = {
         g.opms = document.getElementById('pms');
         g.ops = document.getElementById('pac');
         g.opf = document.getElementById('pf');
+        g.ocb = document.getElementById('cb');
 
         setInterval(g.slupdate, 500);
         setInterval(g.update, 1000/60);
@@ -64,11 +66,14 @@ g = {
     slupdate : function () {
         var pms = parseInt(g.opms.value),
             ps = parseInt(g.ops.value),
-            pf = parseFloat(g.opf.value);
+            pf = parseFloat(g.opf.value),
+            cb = g.ocb.checked;
 
         p.ms = pms;
         p.s = ps;
         p.f = pf;
+        g.cb = cb;
+
 
     },
 
