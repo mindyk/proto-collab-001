@@ -55,6 +55,8 @@ p = {
         c2d.drawImage(p.img, 16 * p.step ,p.sprites[p.d].y,16, 16, p.x, p.y,p.w*p.scale,p.h * p.scale);
         c2d.drawImage(p.shadow, 0 ,0,8, 4, p.x, p.y +32,32,4);
 
+
+
         // if we are moving and animation delta treshold is reached we use the next frame in sprite
         if (p.cpress > 0 && delta > ams) {
             p.step += 1;
