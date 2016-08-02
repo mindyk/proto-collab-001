@@ -32,6 +32,7 @@ p = {
     A: null,
     S: null,
     D: null,
+    Sh: null,
     cpress : 0,
 
     scale : 2,
@@ -104,6 +105,13 @@ p = {
         }
         if (p.D) {
             p.vX += p.s;
+        }
+
+        // check for running
+        if (p.Sh) {
+            p.ms = 10;
+        } else {
+            p.ms = 2;
         }
 
         // cap velocity on max speed
@@ -217,6 +225,9 @@ p = {
                 p.cpress -= 1;
                 p.D = false;
                 break;
+            case 16: // Shift
+                p.Sh = false;
+                break;
         }
     },
 
@@ -246,6 +257,11 @@ p = {
                     p.cpress += 1;
                 }
                 p.D = true;
+                break;
+            case 16: // SHIFT
+                if (!p.Sh) {
+                    p.Sh = true;
+                }
                 break;
         }
     }
