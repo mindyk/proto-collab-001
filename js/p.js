@@ -12,6 +12,7 @@ p = {
     cY : null, // center y
     img : null,
     d : 'S', // N, NE, E, SE, S, SW, W, NW
+    cd: null, // collision direction
     sprites : {
         'S': {x:0, y:0},
         'W': {x:0, y:16},
@@ -44,8 +45,6 @@ p = {
         p.img = img;
         p.shadow = shadowImg;
     },
-
-
 
     draw : function () {
         var ams = 100   ;
@@ -129,21 +128,20 @@ p = {
         p.vX *= p.f;
         p.vY *= p.f;
 
+        // calc future coords
         var fx = g.x + p.vX,
             fy = g.y + p.vY;
 
+        // check collision for future coords
         p.collision(fx, fy);
 
         // add velocity to current positions
         if (p.col == false) {
             g.x += p.vX;
             g.y += p.vY;
-        }
-
-        if(p.vX != 0) {
-            p.inMove = 1;
         } else {
-            p.inMove = 0;
+            p.vX = 0;
+            p.vY = 0;
         }
 
         // detect direction using keys pressed
@@ -181,18 +179,21 @@ p = {
     },
 
     collision : function (fx, fy) {
-
         p.col = false;
+
+        // check collision vs every object in game
         for (var i =0; i< g.d.length; i++) {
             var obj = g.d[i];
-
+            // except grass objects
             if (obj.name == 'grass') {
                 continue;
             }
             obj.col = false;
+            p.cd = null;
             if (g.collision(p, obj, fx, fy)) {
                 p.col = true;
                 obj.col = true;
+                p.cd = p.d;
             }
         }
     },
