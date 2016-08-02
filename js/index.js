@@ -125,8 +125,7 @@ g = {
             t.draw(c2d);
         }
 
-        // draw mini map
-        mm.draw();
+
 
         // time
         c2d.fillText(g.time, 25, 25);
@@ -137,7 +136,9 @@ g = {
             c2d.fillRect(0, 0, g.w, g.h);
 
         }
-
+        
+        // draw mini map
+        mm.draw();
         requestAnimationFrame(g.draw);
     },
 
