@@ -19,5 +19,8 @@ mm = {
             var t = g.d[i];
             c2d.fillRect(mm.x + t.x / 10, mm.y + t.y / 10, 2, 2);
         }
+        c2d.fillStyle = 'white';
+        c2d.fillText(Math.floor(g.x), 100, 25);
+        c2d.fillText(Math.floor(g.y), 125, 25);
     }
 };
