@@ -122,7 +122,7 @@ g = {
         // time
         c2d.fillText(g.time, 25, 25);
 
-        c2d.fillStyle = 'rgba(33,33,33, ' + g.a + ')';
+        c2d.fillStyle = 'rgba(33,33,66, ' + g.a + ')';
         if (g.dn) {
             c2d.fillRect(0,0,g.w, g.h);
 
