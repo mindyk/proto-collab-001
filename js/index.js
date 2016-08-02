@@ -112,12 +112,12 @@ g = {
 
     draw : function () {
 
-        c2d.clearRect(0,0,800,600);
-        cm1.clearRect(0,0,800,600);
+        c2d.clearRect(0, 0, 800, 600);
+        cm1.clearRect(0, 0, 800, 600);
 
         // background
         c2d.fillStyle = '#AA896A';
-        c2d.fillRect(0,0,800,600);
+        c2d.fillRect(0, 0, 800, 600);
 
         c2d.fillStyle = 'black';
         p.draw();
@@ -128,32 +128,24 @@ g = {
             t.draw(c2d);
         }
 
-
-
         // time
         c2d.fillText(g.time, 25, 25);
 
         // save canvas before night
         cm1.drawImage(el_canvas, 0,0);
 
-
-
         // draw night
         c2d.fillStyle = 'rgba(33,33,66, ' + g.a + ')';
         if (g.dn) {
             c2d.fillRect(0, 0, g.w, g.h);
-
         }
 
         c2d.save();
         // select area
         c2d.beginPath();
         c2d.arc(p.cX, p.cY, 100, 0, Math.PI *2);
-        //c2d.stroke();
         c2d.clip();
         c2d.drawImage(el_canvas2, 0, 0);
-        //c2d.fillStyle = 'rgba(255,255,255, 0.5)';
-        //c2d.fillRect(0,0,800,600);
         c2d.restore();
         // draw mini map
         mm.draw();
