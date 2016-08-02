@@ -190,7 +190,7 @@ p = {
                 continue;
             }
             obj.col = false;
-            if (g.colission(p, obj, fx, fy)) {
+            if (g.collision(p, obj, fx, fy)) {
                 p.col = true;
                 obj.col = true;
             }

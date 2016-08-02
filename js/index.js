@@ -65,13 +65,18 @@ g = {
         requestAnimationFrame(g.draw);
     },
 
+    /**
+     * slow update (500ms)
+     */
     slupdate : function () {
-        var pms = parseInt(g.opms.value),
-            ps = parseInt(g.ops.value),
-            pf = parseFloat(g.opf.value),
-            cb = g.ocb.checked,
-            dn = g.odn.checked;
+        // read option values from input fields
+        var pms = parseInt(g.opms.value), // player max speed
+            ps = parseInt(g.ops.value), // player speed
+            pf = parseFloat(g.opf.value), // player friction (slow down)
+            cb = g.ocb.checked, // draw collision boxes
+            dn = g.odn.checked; // draw night
 
+        // assign option values to game values
         p.ms = pms;
         p.s = ps;
         p.f = pf;
@@ -81,11 +86,13 @@ g = {
 
     },
 
+    /**
+     * main game loop
+     */
     update : function () {
         g.tick += 1;
 
-
-
+        // do things every 20 tick , maybe export into slow update
         if (g.tick % 20 == 0) {
             // time
             if (Date.now() - g.stamp > 1000) {
@@ -97,10 +104,12 @@ g = {
                 }
             }
         }
+
         p.update();
     },
 
     draw : function () {
+
         c2d.clearRect(0,0,800,600);
 
         // background
@@ -108,29 +117,38 @@ g = {
         c2d.fillRect(0,0,800,600);
 
         c2d.fillStyle = 'black';
-
         p.draw();
 
-
+        // draw all objects
         for(var i = 0; i < g.d.length; i++) {
             var t = g.d[i];
             t.draw(c2d);
         }
 
+        // draw mini map
         mm.draw();
 
         // time
         c2d.fillText(g.time, 25, 25);
 
+        // draw night
         c2d.fillStyle = 'rgba(33,33,66, ' + g.a + ')';
         if (g.dn) {
-            c2d.fillRect(0,0,g.w, g.h);
+            c2d.fillRect(0, 0, g.w, g.h);
 
         }
+
         requestAnimationFrame(g.draw);
     },
 
-    colission : function(obj1, obj2) {
+    /**
+     * returns true if one of two objects is colliding with the other
+     *
+     * @param obj1
+     * @param obj2
+     * @returns {boolean}
+     */
+    collision : function(obj1, obj2) {
         var col = false,
             o1 = {
                 tl : {x : obj1.cx + p.vX, y:obj1.cy + p.vY},
@@ -174,6 +192,9 @@ g = {
         return col;
     },
 
+    /**
+     * return current alpha transparent value depending on game time
+     */
     calcAlpha : function () {
         switch(g.time) {
             case 0:
@@ -240,9 +261,5 @@ g = {
         }
     }
 };
-
-
-
-
 
 g.init();
