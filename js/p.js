@@ -131,8 +131,8 @@ p = {
         }
 
         // calc center of player
-        p.cX = p.x + p.w / 2;
-        p.cY = p.y + p.h / 2;
+        p.cX = p.x + (p.w * p.scale) / 2;
+        p.cY = p.y + (p.h * p.scale) / 2;
 
         // regress velocity by factor x
         p.vX *= p.f;
