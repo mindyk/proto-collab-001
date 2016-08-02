@@ -14,13 +14,13 @@ function Tree (img) {
     this.name = 'tree';
     this.col = false;
 
-    this.draw = function (c2d) {
+    this.draw = function (c2d, ox, oy) {
         var xy = {x:0,y:0},
             w = 19,
             h = 31,
             scale = 3,
-            x = this.x - g.x,
-            y = this.y - g.y;
+            x = this.x - g.x + ox,
+            y = this.y - g.y + oy;
         c2d.drawImage(g.shadow, 0 ,0, 8, 4, x, y + h*scale - 15, w * scale  , 4);
         c2d.drawImage(this.img, xy.x,xy.y,w,h, x, y, w*scale, h*scale);
 
@@ -37,4 +37,50 @@ function Tree (img) {
             c2d.stroke();
         }
     };
+}
+
+function Tile(x, y) {
+    console.log('new tile');
+    this.x = x;
+    this.y = y;
+
+    this.cTrees = Math.floor(Math.random() * 20) + 10;
+    this.cGrass = Math.floor(Math.random() * 20) + 10;
+    this.cStone = Math.floor(Math.random() * 20) + 10;
+
+
+
+    this.draw = function(c2d) {
+        // draw all objects
+        for(var i = 0; i < this.o.length; i++) {
+            var o = this.o[i];
+            o.draw(c2d, this.x, this.y);
+        }
+    };
+
+    this.gen = function() {
+        var o = new Array();
+        // trees
+        var img = new Image();
+        img.src = 'img/tree.png';
+        for (var i = 0; i < this.cTrees; i++) {
+            o.push(new Tree(img));
+        }
+        // grass
+        var gImg = new Image();
+        gImg.src = 'img/grass.png';
+        for (var ig = 0; ig < this.cGrass; ig++) {
+            o.push(new Grass(gImg));
+        }
+        // grass
+        var sImg = new Image();
+        sImg.src = 'img/stone.png';
+        for (var is = 0; is < this.cStone; is++) {
+            o.push(new Stone(sImg));
+        }
+
+        return o;
+    }
+
+    this.o = this.gen();
 }

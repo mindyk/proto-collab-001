@@ -6,8 +6,14 @@ function Grass (img) {
     this.start = -1;
     this.name = 'grass';
 
-    this.draw = function (c2d) {
-        c2d.drawImage(this.img, 0,0,19,31,this.x - g.x,this.y - g.y, 38,62);
+    /**
+     *
+     * @param c2d
+     * @param ox offset x
+     * @param oy offset y
+     */
+    this.draw = function (c2d, ox, oy) {
+        c2d.drawImage(this.img, 0,0,19,31,this.x - g.x + ox,this.y - g.y +oy, 38,62);
     };
 
 }

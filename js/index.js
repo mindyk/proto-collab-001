@@ -16,6 +16,7 @@ g = {
     time : 12,
     stamp : null,
     shadow : null,
+    tiles : new Array(),
 
     init: function () {
         console.log('g.init');
@@ -39,6 +40,13 @@ g = {
         for (var is = 0; is < 10; is++) {
             g.d.push(new Stone(sImg));
         }
+
+        g.tiles.push(new Tile(-800, -600));
+        g.tiles.push(new Tile(800, 600));
+        g.tiles.push(new Tile(-800, 0));
+        g.tiles.push(new Tile(0, 600));
+        g.tiles.push(new Tile(-800, 600));
+
 
         // player
         var pImg = new Image(),
@@ -125,7 +133,12 @@ g = {
         // draw all objects
         for(var i = 0; i < g.d.length; i++) {
             var t = g.d[i];
-            t.draw(c2d);
+            t.draw(c2d, 0,0);
+        }
+
+        for(var it = 0; it < g.tiles.length; it++) {
+            var tile = g.tiles[it];
+            tile.draw(c2d);
         }
 
         // time
@@ -147,9 +160,9 @@ g = {
         c2d.clip();
         c2d.drawImage(el_canvas2, 0, 0);
         c2d.restore();
+        
         // draw mini map
         mm.draw();
-
 
         requestAnimationFrame(g.draw);
     },
@@ -273,6 +286,7 @@ g = {
                 break;
         }
     }
+    
 };
 
 g.init();

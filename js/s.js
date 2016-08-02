@@ -12,16 +12,16 @@ function Stone (img) {
     this.cy = null; // collision y
     this.col = false;
 
-    this.draw = function (c2d) {
+    this.draw = function (c2d, ox, oy) {
         var w = 16,
             h = 16,
             scale = 2,
-            x = this.x - g.x,
-            y = this.y - g.y;
+            x = this.x - g.x + ox,
+            y = this.y - g.y + oy;
         this.vx = x;
         this.vy = y;
-        c2d.drawImage(g.shadow, 0 ,0, 8, 4, this.x - g.x, this.y - g.y + h*scale -6     , w * scale  , 4);
-        c2d.drawImage(this.img, 0,0,w,h,this.x -g.x,this.y -g.y, w*scale,h*scale);
+        c2d.drawImage(g.shadow, 0 ,0, 8, 4, x, y + h*scale -6     , w * scale  , 4);
+        c2d.drawImage(this.img, 0, 0, w, h, x, y, w*scale,h*scale);
         // collision box
         this.cx = x +5;
         this.cy = y +10  ;
