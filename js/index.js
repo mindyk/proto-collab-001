@@ -25,6 +25,7 @@ g = {
 
 
         g.tiles.push(new Tile(0, 0));
+        console.log(g.tiles[0]);
         //g.tiles.push(new Tile(-800, -600));
         //g.tiles.push(new Tile(800, 600));
         g.tiles.push(new Tile(-800, 0));
@@ -113,12 +114,6 @@ g = {
 
         c2d.fillStyle = 'black';
         p.draw();
-
-        // draw all objects
-        for(var i = 0; i < g.d.length; i++) {
-            var t = g.d[i];
-            t.draw(c2d, 0,0);
-        }
 
         for(var it = 0; it < g.tiles.length; it++) {
             var tile = g.tiles[it];

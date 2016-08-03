@@ -5,6 +5,7 @@ function Tree (img) {
 
     this.w = 19;
     this.h = 31;
+    this.scale = 3;
 
     this.cw = 22; // collsion width
     this.ch = 15; // collision hight
@@ -44,10 +45,9 @@ function Tile(x, y) {
     this.x = x;
     this.y = y;
 
-    this.cTrees = Math.floor(Math.random() * 15) + 10;
+    this.cTrees = Math.floor(Math.random() * 100) + 10;
     this.cGrass = Math.floor(Math.random() * 15) + 10;
     this.cStone = Math.floor(Math.random() * 15) + 5;
-
 
 
     this.draw = function(c2d) {
@@ -59,7 +59,7 @@ function Tile(x, y) {
     };
 
     this.gen = function() {
-        var o = new Array();
+        var o = [];
         // trees
         var img = new Image();
         img.src = 'img/tree.png';
@@ -79,8 +79,14 @@ function Tile(x, y) {
             o.push(new Stone(sImg));
         }
 
+        o.sort(function(a,b) {
+            var ay = a.y + a.h * a.scale,
+                by = b.y + b.h * a.scale;
+            return ay - by;
+        });
         return o;
     }
 
     this.o = this.gen();
+
 }

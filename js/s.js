@@ -2,7 +2,6 @@ function Stone (img) {
     this.img = img;
     this.x = Math.floor(Math.random() * 800) + 1;
     this.y = Math.floor(Math.random() * 600) + 1;
-    this.o = {};
     this.start = -1;
     this.name = 'stone';
 
@@ -11,6 +10,8 @@ function Stone (img) {
     this.cx = null; // collision x
     this.cy = null; // collision y
     this.col = false;
+    this.h = 16;
+    this.scale = 1;
 
     this.draw = function (c2d, ox, oy) {
         var w = 16,
