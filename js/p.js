@@ -192,18 +192,21 @@ p = {
         p.col = false;
 
         // check collision vs every object in game
-        for (var i =0; i< g.d.length; i++) {
-            var obj = g.d[i];
-            // except grass objects
-            if (obj.name == 'grass') {
-                continue;
-            }
-            obj.col = false;
-            p.cd = null;
-            if (g.collision(p, obj, fx, fy)) {
-                p.col = true;
-                obj.col = true;
-                p.cd = p.d;
+        for (var i =0; i< g.tiles.length; i++) {
+            var tile = g.tiles[i];
+            for (var it = 0; it < tile.o.length; it++) {
+                var obj = tile.o[it];
+                // except grass objects
+                if (obj.name == 'grass') {
+                    continue;
+                }
+                obj.col = false;
+                p.cd = null;
+                if (g.collision(p, obj, fx, fy)) {
+                    p.col = true;
+                    obj.col = true;
+                    p.cd = p.d;
+                }
             }
         }
     },

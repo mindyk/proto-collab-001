@@ -22,30 +22,14 @@ g = {
         console.log('g.init');
 
         m.init();
-        // trees
-        var img = new Image();
-        img.src = 'img/tree.png';
-        for (var i = 0; i < 10; i++) {
-            g.d.push(new Tree(img));
-        }
-        // grass
-        var gImg = new Image();
-        gImg.src = 'img/grass.png';
-        for (var ig = 0; ig < 10; ig++) {
-            g.d.push(new Grass(gImg));
-        }
-        // grass
-        var sImg = new Image();
-        sImg.src = 'img/stone.png';
-        for (var is = 0; is < 10; is++) {
-            g.d.push(new Stone(sImg));
-        }
 
-        g.tiles.push(new Tile(-800, -600));
-        g.tiles.push(new Tile(800, 600));
+
+        g.tiles.push(new Tile(0, 0));
+        //g.tiles.push(new Tile(-800, -600));
+        //g.tiles.push(new Tile(800, 600));
         g.tiles.push(new Tile(-800, 0));
-        g.tiles.push(new Tile(0, 600));
-        g.tiles.push(new Tile(-800, 600));
+        //g.tiles.push(new Tile(0, 600));
+        //g.tiles.push(new Tile(-800, 600));
 
 
         // player

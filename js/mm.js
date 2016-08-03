@@ -15,9 +15,11 @@ mm = {
         c2d.fillStyle = 'red';
         c2d.fillRect(mm.x + p.x / 10, mm.y + p.y / 10   , 2,2);
         c2d.fillStyle = 'green';
-        for (var i = 0; i < g.d.length; i++) {
-            var t = g.d[i];
-            c2d.fillRect(mm.x + t.x / 10, mm.y + t.y / 10, 2, 2);
+
+        for (var it = 0; it < g.tiles.length; it++) {
+            var tile = g.tiles[it];
+            var o = g.tiles[it];
+            c2d.fillRect(mm.x + o.x + tile.x / 10, mm.y + o.y + tile.y / 10, 2, 2);
         }
         c2d.fillStyle = 'white';
         c2d.fillText(Math.floor(g.x), 100, 25);

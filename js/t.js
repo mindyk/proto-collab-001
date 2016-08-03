@@ -44,9 +44,9 @@ function Tile(x, y) {
     this.x = x;
     this.y = y;
 
-    this.cTrees = Math.floor(Math.random() * 20) + 10;
-    this.cGrass = Math.floor(Math.random() * 20) + 10;
-    this.cStone = Math.floor(Math.random() * 20) + 10;
+    this.cTrees = Math.floor(Math.random() * 15) + 10;
+    this.cGrass = Math.floor(Math.random() * 15) + 10;
+    this.cStone = Math.floor(Math.random() * 15) + 5;
 
 
 
