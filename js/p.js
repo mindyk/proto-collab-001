@@ -38,8 +38,8 @@ p = {
     scale : 2,
     cx: null,
     cy : null,
-    cw : 29 ,
-    ch : 32 ,
+    cw : 15 ,
+    ch : 10 ,
     col: false,
 
     init : function (img, shadowImg) {
@@ -72,8 +72,8 @@ p = {
         }
 
         // collision box
-        p.cx = p.x+3;
-        p.cy = p.y;
+        p.cx = p.x+10;
+        p.cy = p.y +20;
         c2d.strokeStyle = 'green';
         if (p.col) {
             c2d.strokeStyle = 'red';
