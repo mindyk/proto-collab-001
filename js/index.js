@@ -203,34 +203,34 @@ g = {
     calcAlpha : function () {
         switch(g.time) {
             case 0:
-                g.a = 0.8;
+                g.a = 0.7;
                 break;
             case 1:
-                g.a = 0.8;
+                g.a = 0.7;
                 break;
             case 2:
                 g.a = 0.7;
                 break;
             case 3:
-                g.a = 0.6;
+                g.a = 0.7;
                 break;
             case 4:
-                g.a = 0.5;
+                g.a = 0.7;
                 break;
             case 5:
                 g.a = 0.4;
                 break;
             case 6 :
-                g.a = 0.3;
+                g.a = 0.4;
                 break;
             case 7 :
             case 8 :
-                g.a = 0.2;
+                g.a = 0.4;
                 break;
             case 9 :
             case 10:
             case 11:
-                g.a = 0.1;
+                g.a = 0.4;
                 break;
             case 12:
             case 13:
@@ -240,28 +240,28 @@ g = {
                 g.a = 0.0;
                 break;
             case 17:
-                g.a = 0.1;
+                g.a = 0.4;
                 break;
             case 18:
-                g.a = 0.2;
+                g.a = 0.4;
                 break;
             case 19:
-                g.a = 0.3;
+                g.a = 0.4;
                 break;
             case 20:
                 g.a = 0.4;
                 break;
             case 21:
-                g.a = 0.5;
+                g.a = 0.7;
                 break;
             case 22:
-                g.a = 0.6;
+                g.a = 0.7;
                 break;
             case 23:
                 g.a = 0.7;
                 break;
             case 24:
-                g.a = 0.8;
+                g.a = 0.7;
                 break;
         }
     }
